@@ -83,6 +83,18 @@ with:
   dockerfile: MyDockerFileName
 ```
 
+### working-directory
+Use `working-directory` when the Dockerfile is not in the root dir of the repository
+
+```yaml
+with:
+  name: myDocker/repository
+  username: ${{ secrets.DOCKER_USERNAME }}
+  password: ${{ secrets.DOCKER_PASSWORD }}
+  dockerfile: MyDockerFileName
+  working-directory: ./docker
+```
+
 ### cache
 Use `cache` when you have big images, that you would only like to build partially (changed layers).  
 > CAUTION: This will cache the non changed parts forever. If you use this option, make sure that these parts will be updated by another job!
