@@ -83,8 +83,8 @@ with:
   dockerfile: MyDockerFileName
 ```
 
-### working-directory
-Use `working-directory` when the Dockerfile is not in the root dir of the repository
+### workingdir
+Use `workingdir` when the Dockerfile is not in the root dir of the repository
 
 ```yaml
 with:
@@ -92,7 +92,7 @@ with:
   username: ${{ secrets.DOCKER_USERNAME }}
   password: ${{ secrets.DOCKER_PASSWORD }}
   dockerfile: MyDockerFileName
-  working-directory: ./docker
+  workingdir: ./docker
 ```
 
 ### cache
