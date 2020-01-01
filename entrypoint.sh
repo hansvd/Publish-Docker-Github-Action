@@ -32,8 +32,8 @@ echo ${INPUT_PASSWORD} | docker login -u ${INPUT_USERNAME} --password-stdin ${IN
 DOCKERNAME="${INPUT_NAME}:${BRANCH}"
 BUILDPARAMS="${INPUT_EXTRA_BUILD_PARAMS}"
 
-if [ ! -z "${INPUT_WORKING-DIRECTORY}" ]; then
-  cd ${INPUT_WORKING-DIRECTORY}
+if [ ! -z "${INPUT_WORKING_DIRECTORY}" ]; then
+  cd ${INPUT_WORKING_DIRECTORY}
 fi
 
 if [ ! -z "${INPUT_DOCKERNAME_APPENDIX}" ]; then
