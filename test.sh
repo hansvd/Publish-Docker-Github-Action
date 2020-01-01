@@ -4,7 +4,7 @@ function cleanEnvironment() {
   unset INPUT_TAGGING
   unset INPUT_SNAPSHOT
   unset INPUT_DOCKERFILE
-  unset INPUT_WORKINGDIR
+  unset INPUT_WORKING-DIRECTORY
   unset INPUT_REGISTRY
   unset INPUT_CACHE
   unset GITHUB_SHA
