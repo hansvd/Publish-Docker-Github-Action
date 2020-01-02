@@ -44,6 +44,18 @@ with:
   registry: docker.pkg.github.com
 ```
 
+### tag
+
+Use `tag` to push an  image, which is tagged with {tag}.
+
+```yaml
+if: contains(github.ref, 'refs/tags/v')
+  name: myDocker/repository
+  username: ${{ secrets.DOCKER_USERNAME }}
+  password: ${{ secrets.DOCKER_PASSWORD }}
+  tag: ${{ github.sha }}
+```
+
 ### tagging
 
 Use `tagging` to push an additional image, which is tagged with GITHUB_TAG.

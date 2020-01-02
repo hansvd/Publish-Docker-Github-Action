@@ -49,7 +49,12 @@ if [ ! -z "${INPUT_CACHE}" ]; then
   BUILDPARAMS="$BUILDPARAMS --cache-from ${DOCKERNAME}"
 fi
 
-if [ "${INPUT_SNAPSHOT}" == "true" ]; then
+if [ ! -z "${INPUT_TAG}" ]; then
+  SHA_DOCKER_NAME="${INPUT_NAME}:${INPUT_TAG}"
+  docker build $BUILDPARAMS -t ${DOCKERNAME} -t ${SHA_DOCKER_NAME} .
+  docker push ${DOCKERNAME}
+  docker push ${SHA_DOCKER_NAME}
+elif [ "${INPUT_SNAPSHOT}" == "true" ]; then
   timestamp=`date +%Y%m%d%H%M%S`
   shortSha=$(echo "${GITHUB_SHA}" | cut -c1-6)
   SHA_DOCKER_NAME="${INPUT_NAME}:${timestamp}${shortSha}"
