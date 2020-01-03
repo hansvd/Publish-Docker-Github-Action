@@ -7,4 +7,3 @@ jobs:
     - uses: actions/checkout@master
     - name: Build the Docker image
       run: docker build .
- 
