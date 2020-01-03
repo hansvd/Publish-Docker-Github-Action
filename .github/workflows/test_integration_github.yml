@@ -9,6 +9,6 @@ jobs:
       uses: hansvd/Publish-Docker-Github-Action@master
       with:
         name: docker.pkg.github.com/hansvd/publish-docker-github-action/publish-docker-github-action
-        username: ${{ secrets.DOCKER_USERNAME }}
+        username: ${{ secrets.GITHUB_USERNAME }}
         password: ${{ secrets.TOKEN }}
         registry: docker.pkg.github.com
