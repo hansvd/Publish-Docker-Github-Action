@@ -1,6 +1,7 @@
 #!/bin/sh -e
 
 function cleanEnvironment() {
+  unset INPUT_TAG
   unset INPUT_TAGGING
   unset INPUT_SNAPSHOT
   unset INPUT_DOCKERFILE
@@ -71,6 +72,26 @@ function itPushesSpecificDockerfileReleasesToLatest() {
   local expected="Called mock with: login -u USERNAME --password-stdin
 Called mock with: build -f MyDockerFileName -t my/repository:latest .
 Called mock with: push my/repository:latest
+Called mock with: logout"
+  if [ "$result" != "$expected" ]; then
+    echo "Expected: $expected
+    Got: $result"
+    exit 1
+  fi
+  cleanEnvironment
+}
+
+function itPushesBranchWithTag() {
+  export GITHUB_REF='refs/tags/myRelease'
+  export INPUT_TAG='testtag'
+  export INPUT_USERNAME='USERNAME'
+  export INPUT_PASSWORD='PASSWORD'
+  export INPUT_NAME='my/repository'
+  local result=$(exec /entrypoint.sh)
+  local expected="Called mock with: login -u USERNAME --password-stdin
+Called mock with: build -t my/repository:latest -t my/repository:testtag .
+Called mock with: push my/repository:latest
+Called mock with: push my/repository:testtag
 Called mock with: logout"
   if [ "$result" != "$expected" ]; then
     echo "Expected: $expected
@@ -277,6 +298,7 @@ itPushesBranchAsNameOfTheBranch
 itPushesReleasesToLatest
 itPushesSpecificDockerfileReleasesToLatest
 itPushesBranchByShaAndDateInAddition
+itPushesBranchWithTag
 itCachesImageFromFormerBuildAndUsesItForSnapshotIfConfigured
 itPushesBranchByShaAndDateInAdditionWithSpecificDockerfile
 itCachesImageFromFormerBuildAndUsesItTaggingIfConfigured
