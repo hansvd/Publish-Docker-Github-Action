@@ -1,7 +1,7 @@
 # Publishes docker containers
-[![Actions Status](https://github.com/HurricanKai/Publish-Docker-Github-Action/workflows/Test/badge.svg)](https://github.com/HurricanKai/Publish-Docker-Github-Action/actions)
-[![Actions Status](https://github.com/HurricanKai/Publish-Docker-Github-Action/workflows/Integration%20Test/badge.svg)](https://github.com/HurricanKai/Publish-Docker-Github-Action/actions)
-[![Actions Status](https://github.com/HurricanKai/Publish-Docker-Github-Action/workflows/Integration%20Test%20Github/badge.svg)](https://github.com/HurricanKai/Publish-Docker-Github-Action/actions)
+[![Actions Status](https://github.com/hansvd/Publish-Docker-Github-Action/workflows/Test/badge.svg)](https://github.com/hansvd/Publish-Docker-Github-Action/actions)
+[![Actions Status](https://github.com/hansvd/Publish-Docker-Github-Action/workflows/Integration%20Test/badge.svg)](https://github.com/hansvd/Publish-Docker-Github-Action/actions)
+[![Actions Status](https://github.com/hansvd/Publish-Docker-Github-Action/workflows/Integration%20Test%20Github/badge.svg)](https://github.com/hansvd/Publish-Docker-Github-Action/actions)
 
 This Action for [Docker](https://www.docker.com/) uses the Git branch as the [Docker tag](https://docs.docker.com/engine/reference/commandline/tag/) for building and pushing the container.
 Hereby the master-branch is published as the latest-tag.
@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Publish to Registry
-      uses: HurricanKai/Publish-Docker-Github-Action@master
+      uses: hansvd/Publish-Docker-Github-Action@master
       with:
         name: myDocker/repository
         username: ${{ secrets.DOCKER_USERNAME }}

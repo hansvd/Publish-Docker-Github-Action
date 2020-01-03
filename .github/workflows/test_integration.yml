@@ -6,9 +6,9 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Publish to Registry
-      uses: HurricanKai/Publish-Docker-Github-Action@master
+      uses: hansvd/Publish-Docker-Github-Action@master
       with:
-        name: kaij/publish-docker-github-action
+        name: hansvd/publish-docker-github-action
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         snapshot: true
